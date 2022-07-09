@@ -32,4 +32,5 @@ firewall-cmd --reload
 semanage port -a -t ssh_port_t -p tcp NEWPORT
 semanage port -l | grep ssh
 #out put should be: ssh_port_t  tcp      NEWPORT, 22
+
 sudo systemctl restart sshd.service
