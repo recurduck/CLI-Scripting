@@ -1,0 +1,35 @@
+# set the following ssh configs for secure your Linux Device
+# location /etc/ssh/sshd_config
+
+# If you want to change the port on a SELinux system, you have to tell
+# SELinux about this change.
+# semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+
+#Port 22
+Port <change it to Port 5 Digits Free port>
+
+#PermitRootLogin yes change to no
+PermitRootLogin no
+
+PermitEmptyPasswords no
+
+#ClientAliveInterval 0
+ClientAliveInterval 600 #will shoutdown ssh connection after 10m inactivity
+#ClientAliveCountMax 3
+ClientAliveCountMax 0
+
+# add these 2 lines below:
+#Allow the following users only
+AllowUsers <user1name> <user2name> <if there is more...>
+
+#type :qw!
+
+#run the following commands for updating firewall and SELinux if used
+firewall-cmd --permanent --zone=public --add-port=NEWPORT/tcp
+firewall-cmd --reload
+
+# if semanage cmd not recognized install policycoreutils-python - #yum install policycoreutils-python
+semanage port -a -t ssh_port_t -p tcp NEWPORT
+semanage port -l | grep ssh
+#out put should be: ssh_port_t  tcp      NEWPORT, 22
+sudo systemctl restart sshd.service
