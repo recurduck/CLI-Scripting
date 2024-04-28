@@ -27,6 +27,7 @@ sudo apt install fail2ban
 sudo apt install nmap
 sudo apt install rsync
 sudo apt install auditd
+sudo apt install tightvncserver
 
 sudo apt install cryptsetup
 sudo cryptsetup luksFormat /dev/sdxX
