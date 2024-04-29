@@ -28,6 +28,8 @@ sudo apt install nmap
 sudo apt install rsync
 sudo apt install auditd
 sudo apt install tightvncserver
+sudo apt install openvpn
+sudo apt install tree
 
 sudo apt install cryptsetup
 sudo cryptsetup luksFormat /dev/sdxX
