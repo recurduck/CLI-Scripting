@@ -7,9 +7,11 @@ sudo adduser username
 sudo usermod -aG sudo username
 
 sudo apt install ufw
-sudo ufw enable
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
+sudo ufw allow 2222/tcp  # Or 22 if using default SSH port
+sudo ufw allow 5900/tcp 
+sudo ufw enable
 
 ssh-keygen -t rsa -b 4096
 ssh-copy-id username@remote_host
